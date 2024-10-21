@@ -1,0 +1,41 @@
+body {
+  position: relative;
+}
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.box {
+  text-align: center;
+  margin-right: 50px;
+  width: 300px;
+  height: 200px;
+  font-size: 50px;
+  border: none;
+  border-radius: 30px;
+  box-shadow: 10px 10px 1px 2px #000;
+}
+
+.box:hover {
+  cursor: pointer;
+}
+
+.back {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  font-size: 50px;
+}
+
+.back .icon-back {
+  color: #4361ee;
+  padding: 10px;
+}
+
+.back .icon-back:hover {
+  cursor: pointer;
+  color: #3a0ca3;
+}

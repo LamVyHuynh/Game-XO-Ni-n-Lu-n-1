@@ -1,0 +1,36 @@
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+.box {
+  width: 500px;
+  height: 100px;
+  margin-right: 20px;
+  font-size: 30px;
+  border: none;
+  border-radius: 40px;
+}
+
+#GamePeople {
+  background-color: #d90429;
+  color: #fff;
+}
+
+#GamePeople:hover {
+  cursor: pointer;
+  background-color: #2b2d42;
+}
+
+#GameRobot {
+  background-color: #0466c8;
+  color: #fff;
+}
+
+#GameRobot:hover {
+  cursor: pointer;
+  background-color: #2b2d42;
+}

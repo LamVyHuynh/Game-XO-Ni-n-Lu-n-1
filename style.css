@@ -1,0 +1,30 @@
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  background-color: #fffbf9;
+}
+
+h1 {
+  font-size: 50px;
+  color: #4b68d0;
+  font-weight: 700;
+}
+
+#btn_play {
+  display: block;
+  font-size: 30px;
+  color: #fffbf9;
+  width: 300px;
+  height: 150px;
+  border: none;
+  border-radius: 90px;
+  background-color: #4b68d0;
+}
+
+#btn_play:hover {
+  cursor: pointer;
+  background-color: #0f2d58;
+}

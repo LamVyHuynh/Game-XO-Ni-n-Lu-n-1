@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./3x3Robot.css" />
+    <title>3X3</title>
+  </head>
+  <body>
+    <div class="left">
+      <button onclick="Home()" class="nuts nut_home" title="Trang chủ">
+        Trang chủ
+      </button>
+      <button
+        onclick="TheLoai()"
+        class="nuts nut_theloai"
+        title="Chọn thể loại"
+      >
+        Thể loại
+      </button>
+    </div>
+    <div id="container">
+      <div class="khung_chua_nut">
+        <p class="nut_nguoi_choi">Tới lượt: <span id="who_next"></span></p>
+      </div>
+      <div id="result"></div>
+    </div>
+    <div id="show_status">
+      <div id="header_status">Game Caro 3x3</div>
+      <div id="gamestatus"></div>
+      <div class="btn_reset">
+        <button onclick="reset()" class="nuts nut_reset">Ván mới</button>
+      </div>
+    </div>
+  </body>
+  <script src="./3x3Robot.js"></script>
+</html>

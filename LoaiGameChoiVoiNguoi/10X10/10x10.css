@@ -1,0 +1,149 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fffbf9;
+}
+
+#container {
+  padding: 50px;
+}
+
+.left {
+  position: absolute;
+  left: 30px;
+  top: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.khung_chua_nut {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.khung_chua_nut .nut_nguoi_choi {
+  font-size: 40px;
+  margin-right: 40px;
+}
+
+.nuts {
+  border-radius: 40px;
+  font-size: 30px;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 200px;
+  outline: none;
+  border: none;
+}
+
+.nut_reset {
+  color: #fffbf9;
+  background-color: #4b68d0;
+}
+
+.nut_reset:hover {
+  background-color: #0f2d58;
+}
+
+.nuts:hover {
+  cursor: pointer;
+}
+
+.nut_home {
+  background-color: #4361ee;
+  color: #fff;
+}
+
+.nut_home:hover {
+  background-color: #3a0ca3;
+}
+
+table {
+  border: 1px solid #000;
+}
+
+td {
+  text-align: center;
+  border: 1px solid #000;
+  width: 30px;
+  height: 30px;
+  font-weight: 600;
+}
+
+td:hover {
+  cursor: pointer;
+  background-color: #ddd;
+}
+
+#gamestatus {
+  width: auto;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+#result {
+  width: 400px;
+  height: 300px;
+  margin: auto;
+}
+
+#who_win {
+  color: blue;
+  font-weight: 700;
+}
+
+#show_status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 40px;
+  width: 300px;
+  background-color: #fffbf9;
+  box-shadow: 2px 3px 2px 2px #000;
+  display: none;
+  position: absolute;
+  top: 35%;
+  left: 39%;
+  animation: ease-in-out 0.2s ShowStatus;
+}
+
+#header_status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: inherit;
+  height: 100px;
+  border-radius: 40px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 30px;
+  color: #fffbf9;
+  background-color: #4b68d0;
+  margin-bottom: 30px;
+}
+
+#gamestatus {
+  width: auto;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+#show_status .btn_reset {
+  display: flex;
+  justify-content: center;
+}
+
+@keyframes ShowStatus {
+  from {
+    transform: scale(0.5);
+  }
+  to {
+    transform: scale(1);
+  }
+}
