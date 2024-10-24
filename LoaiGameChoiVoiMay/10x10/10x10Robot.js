@@ -74,23 +74,44 @@ function display() {
 }
 //KẾT THÚC: Code tạo bảng để đánh XO
 //   BẮT ĐẦU THAO TÁC BẤM XO
+//   BẮT ĐẦU THAO TÁC BẤM XO
 function DanhXO(i, j) {
   if (gameEnded || array[i][j] !== "") return; // Không cho phép đi lại vào ô đã đánh hoặc trò chơi đã kết thúc
-  array[i][j] = isPlayer1 ? "X" : "O"; // Gán cho array có giá trị của isPlayer1 = true thì nó đánh X còn false thì nó sẽ đánh là O
+  array[i][j] = "X"; // Gán cho array có giá trị của isPlayer1 = true thì nó đánh X còn false thì nó sẽ đánh là O
   if (array[i][j] === "X") {
     document.getElementById(
       "who_next"
     ).innerHTML = `<span style="color:red;font-weight: 700">O</span>`;
-  } else {
-    document.getElementById(
-      "who_next"
-    ).innerHTML = `<span style="color:blue; font-weight: 700">X</span>`;
   }
+
   display(); // Cập nhật giao diện bàn cờ
   XacNhanTinhTrang(i, j);
   isPlayer1 = !isPlayer1; // không có 2 trường hợp trên thì isPlayer1 sẽ chuyển thành false và Nước O sẽ đi
+  setTimeout(MayDanhXO, 500);
 }
 //   KẾT THÚC THAO TÁC BẤM XO
+
+// BẮT ĐẦU HÀM MÁY ĐÁNH
+function MayDanhXO() {
+  if (gameEnded) return;
+  for (let i = 0; i < 10; i++) {
+    for (let j = 0; j < 10; j++) {
+      if (array[i][j] === "") {
+        array[i][j] = "O";
+        if (array[i][j] === "O") {
+          document.getElementById(
+            "who_next"
+          ).innerHTML = `<span style="color:blue; font-weight: 700">X</span>`;
+        }
+        display();
+        XacNhanTinhTrang(i, j); // Kiem TraThang
+        isPlayer1 = !isPlayer1;
+        return;
+      }
+    }
+  }
+}
+// KẾT THÚC HÀM MÁY ĐÁNH
 
 // BẮT ĐẦU XÁC NHẬN CHIẾN THẮNG
 function XacNhanTinhTrang(i, j) {
