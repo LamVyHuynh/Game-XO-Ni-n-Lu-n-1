@@ -127,7 +127,10 @@ function alphaBeta(board, depth, isMaximizing, alpha, beta) {
   if (kiemTraThang("O")) return 1; // Máy thắng
   if (kiemTraThang("X")) return -1; // Người chơi thắng
   if (kiemTraDay()) return 0; // Hòa
-
+  // Giới hạn độ sâu, ví dụ: không cho phép duyệt quá 3 lượt
+  if (depth >= 1) {
+    return 0; // Tại độ sâu nhất, trả về giá trị hòa
+  }
   if (isMaximizing) {
     let maxEval = -Infinity;
     for (let i = 0; i < 3; i++) {
