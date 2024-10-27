@@ -13,7 +13,7 @@ window.onload = function () {
 // BẮT ĐẦU TRỞ VỀ THỂ LOẠI
 
 function TheLoai() {
-  location.assign("../TheLoaiGame.html");
+  location.assign("../TheLoaiGameRobot.html");
 }
 
 function Home() {
@@ -27,7 +27,6 @@ function reset() {
   // Khi làm ván mới thì các giá trị đã đánh sẽ trống
   isPlayer1 = true;
   gameEnded = false;
-  arrayWin = [];
   document.getElementById("gamestatus").innerHTML = "";
   for (let i = 0; i < 3; i++) {
     array[i] = new Array(10);
@@ -74,44 +73,94 @@ function display() {
 }
 //KẾT THÚC: Code tạo bảng để đánh XO
 
-//   BẮT ĐẦU THAO TÁC BẤM XO
+//   BẮT ĐẦU THAO TÁC ĐÁNH XO
 function DanhXO(i, j) {
   if (gameEnded || array[i][j] !== "") return; // Không cho phép đi lại vào ô đã đánh hoặc trò chơi đã kết thúc
   array[i][j] = "X"; // Gán cho array có giá trị của isPlayer1 = true thì nó đánh X còn false thì nó sẽ đánh là O
-  if (array[i][j] === "X") {
+  display(); // Cập nhật giao diện bàn cờ
+  XacNhanTinhTrang(i, j);
+  if (!gameEnded) {
+    isPlayer1 = !isPlayer1; // không có 2 trường hợp trên thì isPlayer1 sẽ chuyển thành false và Nước O sẽ đi
     document.getElementById(
       "who_next"
     ).innerHTML = `<span style="color:red;font-weight: 700">O</span>`;
+    setTimeout(MayDanhXO, 300); // cho máy đánh khi trò chơi chưa kết thúc
   }
-
-  display(); // Cập nhật giao diện bàn cờ
-  XacNhanTinhTrang(i, j);
-  isPlayer1 = !isPlayer1; // không có 2 trường hợp trên thì isPlayer1 sẽ chuyển thành false và Nước O sẽ đi
-  setTimeout(MayDanhXO, 500);
 }
-//   KẾT THÚC THAO TÁC BẤM XO
+//   KẾT THÚC THAO TÁC ĐÁNH XO
 
 // BẮT ĐẦU HÀM MÁY ĐÁNH
+// Mã đã sửa đổi cho hàm MayDanhXO
 function MayDanhXO() {
   if (gameEnded) return;
+  let bScore = -Infinity;
+  let bMove;
+
   for (let i = 0; i < 3; i++) {
     for (let j = 0; j < 3; j++) {
       if (array[i][j] === "") {
-        array[i][j] = "O";
-        if (array[i][j] === "O") {
-          document.getElementById(
-            "who_next"
-          ).innerHTML = `<span style="color:blue; font-weight: 700">X</span>`;
+        array[i][j] = "O"; // Giả lập nước đi
+        let d = alphaBeta(array, 0, false, -Infinity, Infinity);
+        array[i][j] = ""; // Khôi phục lại ô trống
+
+        if (d > bScore) {
+          bScore = d; // Gán điểm
+          bMove = { i, j }; // Cập nhật lại vị trí tốt nhất
         }
-        display();
-        XacNhanTinhTrang(i, j); // Kiem TraThang
-        isPlayer1 = !isPlayer1;
-        return;
       }
     }
   }
+
+  if (bMove) {
+    arrayWin = []; // Reset lại mảng arrayWin trước khi máy thực sự đánh
+    array[bMove.i][bMove.j] = "O"; // Máy đánh
+    display(); // Cập nhật giao diện
+    XacNhanTinhTrang(bMove.i, bMove.j); // Kiểm tra tình trạng thắng
+    isPlayer1 = !isPlayer1; // Chuyển lượt
+  }
 }
+
 // KẾT THÚC HÀM MÁY ĐÁNH
+
+// BẮT ĐẦU HÀM Alpha-beta
+function alphaBeta(board, depth, isMaximizing, alpha, beta) {
+  if (kiemTraThang("O")) return 1; // Máy thắng
+  if (kiemTraThang("X")) return -1; // Người chơi thắng
+  if (kiemTraDay()) return 0; // Hòa
+
+  if (isMaximizing) {
+    let maxEval = -Infinity;
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        if (board[i][j] === "") {
+          board[i][j] = "O"; // Giả lập nước đi
+          let eval = alphaBeta(board, depth + 1, false, alpha, beta);
+          board[i][j] = ""; // Khôi phục lại ô trống
+          maxEval = Math.max(maxEval, eval);
+          alpha = Math.max(alpha, eval);
+          if (beta <= alpha) break; // Cắt tỉa
+        }
+      }
+    }
+    return maxEval;
+  } else {
+    let minEval = Infinity;
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        if (board[i][j] === "") {
+          board[i][j] = "X"; // Giả lập nước đi
+          let eval = alphaBeta(board, depth + 1, true, alpha, beta);
+          board[i][j] = ""; // Khôi phục lại ô trống
+          minEval = Math.min(minEval, eval);
+          beta = Math.min(beta, eval);
+          if (beta <= alpha) break; // Cắt tỉa
+        }
+      }
+    }
+    return minEval;
+  }
+}
+// KẾT THÚC HÀM Alpha-beta
 
 // BẮT ĐẦU XÁC NHẬN CHIẾN THẮNG
 function XacNhanTinhTrang(i, j) {
@@ -123,14 +172,14 @@ function XacNhanTinhTrang(i, j) {
     }`;
     setTimeout(() => {
       ShowBox.style.display = "block";
-    }, 300);
+    }, 500);
     display();
     gameEnded = true;
   } else if (kiemTraDay()) {
     document.getElementById("gamestatus").innerHTML = "Hòa nhau!";
     setTimeout(() => {
       ShowBox.style.display = "block";
-    }, 300);
+    }, 500);
     gameEnded = true;
   }
 }

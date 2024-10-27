@@ -12,7 +12,7 @@ window.onload = function () {
 
 // BẮT ĐẦU TRỞ VỀ THỂ LOẠI
 function TheLoai() {
-  location.assign("../TheLoaiGame.html");
+  location.assign("../TheLoaiGameRobot.html");
 }
 // KẾT THÚC TRỞ VỀ THỂ LOẠI
 
@@ -28,7 +28,6 @@ function reset() {
   isPlayer1 = true;
   gameEnded = false;
   document.getElementById("gamestatus").innerHTML = "";
-  arrayWin = [];
   for (let i = 0; i < 6; i++) {
     array[i] = new Array(10);
     for (let j = 0; j < 6; j++) {
@@ -92,24 +91,77 @@ function DanhXO(i, j) {
 // BẮT ĐẦU HÀM MÁY ĐÁNH
 function MayDanhXO() {
   if (gameEnded) return;
+  let bScore = -Infinity;
+  let bMove;
+
   for (let i = 0; i < 6; i++) {
     for (let j = 0; j < 6; j++) {
       if (array[i][j] === "") {
-        array[i][j] = "O";
-        if (array[i][j] === "O") {
-          document.getElementById(
-            "who_next"
-          ).innerHTML = `<span style="color:blue; font-weight: 700">X</span>`;
+        array[i][j] = "O"; // Giả lập nước đi
+        let d = alphaBeta(array, 0, false, -Infinity, Infinity);
+        array[i][j] = ""; // Khôi phục lại ô trống
+
+        if (d > bScore) {
+          bScore = d; // Gán điểm
+          bMove = { i, j }; // Cập nhật lại vị trí tốt nhất
         }
-        display();
-        XacNhanTinhTrang(i, j); // Kiem TraThang
-        isPlayer1 = !isPlayer1;
-        return;
       }
     }
   }
+
+  if (bMove) {
+    arrayWin = []; // Reset lại mảng arrayWin trước khi máy thực sự đánh
+    array[bMove.i][bMove.j] = "O"; // Máy đánh
+    display(); // Cập nhật giao diện
+    XacNhanTinhTrang(bMove.i, bMove.j); // Kiểm tra tình trạng thắng
+    isPlayer1 = !isPlayer1; // Chuyển lượt
+  }
 }
+
 // KẾT THÚC HÀM MÁY ĐÁNH
+
+// BẮT ĐẦU HÀM Alpha-beta
+function alphaBeta(board, depth, isMaximizing, alpha, beta) {
+  if (kiemTraThang("O")) return 1; // Máy thắng
+  if (kiemTraThang("X")) return -1; // Người chơi thắng
+  if (kiemTraDay()) return 0; // Hòa
+  // Giới hạn độ sâu, ví dụ: không cho phép duyệt quá 3 lượt
+  if (depth >= 1) {
+    return 0; // Tại độ sâu nhất, trả về giá trị hòa
+  }
+  if (isMaximizing) {
+    let maxEval = -Infinity;
+    for (let i = 0; i < 6; i++) {
+      for (let j = 0; j < 6; j++) {
+        if (board[i][j] === "") {
+          board[i][j] = "O"; // Giả lập nước đi
+          let eval = alphaBeta(board, depth + 1, false, alpha, beta);
+          board[i][j] = ""; // Khôi phục lại ô trống
+          maxEval = Math.max(maxEval, eval);
+          alpha = Math.max(alpha, eval);
+          if (beta <= alpha) break; // Cắt tỉa
+        }
+      }
+    }
+    return maxEval;
+  } else {
+    let minEval = Infinity;
+    for (let i = 0; i < 6; i++) {
+      for (let j = 0; j < 6; j++) {
+        if (board[i][j] === "") {
+          board[i][j] = "X"; // Giả lập nước đi
+          let eval = alphaBeta(board, depth + 1, true, alpha, beta);
+          board[i][j] = ""; // Khôi phục lại ô trống
+          minEval = Math.min(minEval, eval);
+          beta = Math.min(beta, eval);
+          if (beta <= alpha) break; // Cắt tỉa
+        }
+      }
+    }
+    return minEval;
+  }
+}
+// KẾT THÚC HÀM Alpha-beta
 
 // BẮT ĐẦU XÁC NHẬN CHIẾN THẮNG
 function XacNhanTinhTrang(i, j) {
