@@ -28,6 +28,7 @@ function reset() {
   isPlayer1 = true;
   gameEnded = false;
   document.getElementById("gamestatus").innerHTML = "";
+  arrayWin = [];
   for (let i = 0; i < 3; i++) {
     array[i] = new Array(10);
     for (let j = 0; j < 3; j++) {

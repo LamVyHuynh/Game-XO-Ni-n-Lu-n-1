@@ -28,6 +28,7 @@ function reset() {
   isPlayer1 = true;
   gameEnded = false;
   document.getElementById("gamestatus").innerHTML = "";
+  arrayWin = [];
   for (let i = 0; i < 6; i++) {
     array[i] = new Array(10);
     for (let j = 0; j < 6; j++) {
@@ -135,7 +136,7 @@ function alphaBeta(board, doSau, isMaximizing, alpha, beta) {
   if (kiemTraThang("X")) return -1; // Người chơi thắng
   if (kiemTraDay()) return 0; // Hòa
   // Giới hạn độ sâu giúp xử lí nhanh hơn
-  if (doSau >= 1) {
+  if (doSau >= 3) {
     return 0; // Tại độ sâu nhất, trả về giá trị hòa
   }
   if (isMaximizing) {
