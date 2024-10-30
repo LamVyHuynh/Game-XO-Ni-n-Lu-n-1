@@ -128,14 +128,15 @@ function kiemTraThang(value) {
 function kiemTraTrenXuong(value) {
   for (let i = 0; i < 6; i++) {
     for (let j = 0; j < 6; j++) {
-      if (i + 2 < 6) {
+      if (i + 3 < 6) {
         // Dòng điều kiện này đảm bảo là sẽ có đủ 5 ô liên tiếp để chiến thắng
         if (
           array[i][j] === value &&
           array[i + 1][j] === value &&
-          array[i + 2][j] === value
+          array[i + 2][j] === value &&
+          array[i + 3][j] === value
         ) {
-          for (let m = 0; m < 3; m++) {
+          for (let m = 0; m < 4; m++) {
             arrayWin.push(`${i + m} - ${j}`);
           }
           return true;
@@ -149,13 +150,14 @@ function kiemTraTrenXuong(value) {
 function kiemTraTraiPhai(value) {
   for (let i = 0; i < 6; i++) {
     for (let j = 0; j < 6; j++) {
-      if (j + 2 < 6) {
+      if (j + 3 < 6) {
         if (
           array[i][j] === value &&
           array[i][j + 1] === value &&
-          array[i][j + 2] === value
+          array[i][j + 2] === value &&
+          array[i][j + 3] === value
         ) {
-          for (let m = 0; m < 3; m++) {
+          for (let m = 0; m < 4; m++) {
             arrayWin.push(`${i} - ${j + m}`);
           }
           return true;
@@ -169,13 +171,14 @@ function kiemTraTraiPhai(value) {
 function kiemTraCheoTrai(value) {
   for (let i = 0; i < 6; i++) {
     for (let j = 0; j < 6; j++) {
-      if (i + 2 < 6 && j + 2 < 6) {
+      if (i + 3 < 6 && j + 3 < 6) {
         if (
           array[i][j] === value &&
           array[i + 1][j + 1] === value &&
-          array[i + 2][j + 2] === value
+          array[i + 2][j + 2] === value &&
+          array[i + 3][j + 3] === value
         ) {
-          for (let m = 0; m < 3; m++) {
+          for (let m = 0; m < 4; m++) {
             arrayWin.push(`${i + m} - ${j + m}`);
           }
           return true;
@@ -189,13 +192,14 @@ function kiemTraCheoTrai(value) {
 function kiemTraCheoPhai(value) {
   for (let i = 0; i < 6; i++) {
     for (let j = 0; j < 6; j++) {
-      if (i + 2 < 6 && j - 2 >= 0) {
+      if (i + 3 < 6 && j - 3 >= 0) {
         if (
           array[i][j] === value &&
           array[i + 1][j - 1] === value &&
-          array[i + 2][j - 2] === value
+          array[i + 2][j - 2] === value &&
+          array[i + 3][j - 3] === value
         ) {
-          for (let m = 0; m < 3; m++) {
+          for (let m = 0; m < 4; m++) {
             arrayWin.push(`${i + m} - ${j - m}`);
           }
           return true;
