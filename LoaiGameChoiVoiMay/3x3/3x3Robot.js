@@ -137,7 +137,7 @@ function alphaBeta(board, doSau, isMaximizing, alpha, beta) {
   if (kiemTraDay()) return 0; // Hòa
   // Giới hạn độ sâu giúp xử lí nhanh hơn
   if (doSau >= 1) {
-    return 0; // Tại độ sâu nhất, trả về giá trị hòa
+    return 0; // Không còn nước đi nào hết thì sẽ trả về hoà
   }
   if (isMaximizing) {
     let maxEval = -Infinity;
@@ -148,9 +148,10 @@ function alphaBeta(board, doSau, isMaximizing, alpha, beta) {
           let eval = alphaBeta(board, doSau + 1, false, alpha, beta);
           // Nếu không khôi phục thì những nước đi giả định sẽ hiện lên bàn cờ
           board[i][j] = "";
-          // gán giá trị nhỏ nhất cho maxEval để lưu lại những lần sau sẽ so sánh với eval nữa
+          // gán giá trị lớn nhất cho maxEval để lưu lại những lần sau sẽ so sánh với eval nữa
+          // giá trị lớn nhất có thể đạt được hợp
           maxEval = Math.max(maxEval, eval);
-          // tìm giá trị lớn nhất và gán cho alpha
+          // tìm giá trị lớn nhất và gán cho alpha, ngưỡng giá trị lớn nhất
           alpha = Math.max(alpha, eval);
           if (beta <= alpha) break; // Cắt tỉa
         }
