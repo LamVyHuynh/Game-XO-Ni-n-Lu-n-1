@@ -94,7 +94,7 @@ function MayDanhXO() {
   if (gameEnded) return;
   // Ban đầu O điểm cao nhất là âm vô cực để khi tìm nó sẽ tìm đường tốt hơn
   let diemCaoNhat = -Infinity;
-  let nuocDiTotNhat;
+  let nuocDiTotNhat = null;
 
   for (let i = 0; i < 6; i++) {
     for (let j = 0; j < 6; j++) {

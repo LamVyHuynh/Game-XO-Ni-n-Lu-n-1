@@ -95,7 +95,7 @@ function MayDanhXO() {
   if (gameEnded) return;
   // Ban đầu O điểm cao nhất là âm vô cực để khi tìm nó sẽ tìm đường tốt hơn
   let diemCaoNhat = -Infinity;
-  let nuocDiTotNhat;
+  let nuocDiTotNhat = null;
 
   for (let i = 0; i < 3; i++) {
     for (let j = 0; j < 3; j++) {
@@ -174,7 +174,6 @@ function alphaBeta(board, doSau, isMaximizing, alpha, beta) {
           minEval = Math.min(minEval, eval);
           // tìm giá trị nhỏ nhất và gán cho beta
           beta = Math.min(beta, eval);
-
           if (beta <= alpha) break; // Cắt tỉa
         }
       }
