@@ -131,57 +131,75 @@ function MayDanhXO() {
 
 // KẾT THÚC HÀM MÁY ĐÁNH
 
+// BẮT ĐÀU ĐÁNH GIÁ BÀN CỜ
+function danhGiaBanCo() {
+  if (kiemTraThang("O")) return 1;
+  if (kiemTraThang("X")) return -1;
+  if (kiemTraDay()) return 0;
+  return null;
+}
 // BẮT ĐẦU HÀM Alpha-beta
 function alphaBeta(board, doSau, isMaximizing, alpha, beta) {
-  if (kiemTraThang("O")) return 1; // Máy thắng
-  if (kiemTraThang("X")) return -1; // Người chơi thắng
-  if (kiemTraDay()) return 0; // Hòa
+  let danhGia = danhGiaBanCo();
+  if (danhGia !== null) return danhGia;
   // Giới hạn độ sâu giúp xử lí nhanh hơn
   if (doSau >= 1) {
-    return 0; // Không còn nước đi nào hết thì sẽ trả về hoà
+    return 0; // Tại độ sâu nhất, trả về giá trị hòa
   }
   if (isMaximizing) {
-    let maxEval = -Infinity;
-    for (let i = 0; i < 3; i++) {
-      for (let j = 0; j < 3; j++) {
-        if (board[i][j] === "") {
-          board[i][j] = "O"; // Giả lập nước đi
-          let eval = alphaBeta(board, doSau + 1, false, alpha, beta);
-          // Nếu không khôi phục thì những nước đi giả định sẽ hiện lên bàn cờ
-          board[i][j] = "";
-          // gán giá trị lớn nhất cho maxEval để lưu lại những lần sau sẽ so sánh với eval nữa
-          // giá trị lớn nhất có thể đạt được hợp
-          maxEval = Math.max(maxEval, eval);
-          // tìm giá trị lớn nhất và gán cho alpha, ngưỡng giá trị lớn nhất
-          alpha = Math.max(alpha, eval);
-          if (beta <= alpha) break; // Cắt tỉa
-        }
-      }
-    }
-    return maxEval;
+    return MayDanhMax(board, doSau, alpha, beta);
   } else {
-    let minEval = Infinity;
-    for (let i = 0; i < 3; i++) {
-      for (let j = 0; j < 3; j++) {
-        if (board[i][j] === "") {
-          board[i][j] = "X"; // Giả lập nước đi
-          // eval sẽ trả về trạng thái trò chơi nếu O thắng thì sẽ là 1,
-          // X thắng thì sẽ là -1, Còn hoà thì sẽ là 0
-          let eval = alphaBeta(board, doSau + 1, true, alpha, beta);
-          // Ban đầu sẽ cho nước đi giả lập trên tất cả các nước đi của bàn cờ nếu bỏ thì nó sẽ hiện hết tất cả nước đi giả lập đó
-          board[i][j] = "";
-          // gán giá trị nhỏ nhất cho minEval để lưu lại những lần sau sẽ so sánh với eval nữa
-          minEval = Math.min(minEval, eval);
-          // tìm giá trị nhỏ nhất và gán cho beta
-          beta = Math.min(beta, eval);
-          if (beta <= alpha) break; // Cắt tỉa
-        }
-      }
-    }
-    return minEval;
+    return NguoiDanhMin(board, doSau, alpha, beta);
   }
 }
 // KẾT THÚC HÀM Alpha-beta
+
+// BẮT ĐẦU HÀM MÁY ĐÁNH MAX
+function MayDanhMax(board, doSau, alpha, beta) {
+  let maxEval = -Infinity;
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+      if (board[i][j] === "") {
+        board[i][j] = "O"; // Giả lập nước đi
+        let eval = alphaBeta(board, doSau + 1, false, alpha, beta);
+        // Nếu không khôi phục thì những nước đi giả định sẽ hiện lên bàn cờ
+        board[i][j] = "";
+        // gán giá trị nhỏ nhất cho maxEval để lưu lại những lần sau sẽ so sánh với eval nữa
+        maxEval = Math.max(maxEval, eval);
+        // tìm giá trị lớn nhất và gán cho alpha
+        alpha = Math.max(alpha, eval);
+        if (beta <= alpha) break; // Cắt tỉa
+      }
+    }
+  }
+  return maxEval;
+}
+// KẾT THÚC HÀM MÁY ĐÁNH MAX
+
+// BẮT ĐẦU HÀM NGƯỜI ĐÁNH MIN
+function NguoiDanhMin(board, doSau, alpha, beta) {
+  let minEval = Infinity;
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+      if (board[i][j] === "") {
+        board[i][j] = "X"; // Giả lập nước đi
+        // eval sẽ trả về trạng thái trò chơi nếu O thắng thì sẽ là 1,
+        // X thắng thì sẽ là -1, Còn hoà thì sẽ là 0
+        let eval = alphaBeta(board, doSau + 1, true, alpha, beta);
+        // Ban đầu sẽ cho nước đi giả lập trên tất cả các nước đi của bàn cờ nếu bỏ thì nó sẽ hiện hết tất cả nước đi giả lập đó
+        board[i][j] = "";
+        // gán giá trị nhỏ nhất cho minEval để lưu lại những lần sau sẽ so sánh với eval nữa
+        minEval = Math.min(minEval, eval);
+        // tìm giá trị nhỏ nhất và gán cho beta
+        beta = Math.min(beta, eval);
+
+        if (beta <= alpha) break; // Cắt tỉa
+      }
+    }
+  }
+  return minEval;
+}
+// KẾT THÚC HÀM NGƯỜI ĐÁNH MIN
 
 // BẮT ĐẦU XÁC NHẬN CHIẾN THẮNG
 function XacNhanTinhTrang(i, j) {
