@@ -142,7 +142,7 @@ function alphaBeta(board, doSau, isMaximizing, alpha, beta) {
   let danhGia = danhGiaBanCo();
   if (danhGia !== null) return danhGia;
   // Giới hạn độ sâu giúp xử lí nhanh hơn
-  if (doSau >= 3) {
+  if (doSau >= 1) {
     return 0; // Tại độ sâu nhất, trả về giá trị hòa
   }
   if (isMaximizing) {
@@ -164,9 +164,9 @@ function MayDanhMax(board, doSau, alpha, beta) {
         // Nếu không khôi phục thì những nước đi giả định sẽ hiện lên bàn cờ
         board[i][j] = "";
         // gán giá trị nhỏ nhất cho maxEval để lưu lại những lần sau sẽ so sánh với eval nữa
-        maxEval = Math.max(maxEval, eval);
+        if (maxEval < eval) maxEval = eval;
         // tìm giá trị lớn nhất và gán cho alpha
-        alpha = Math.max(alpha, eval);
+        if (alpha < eval) alpha = eval;
         if (beta <= alpha) break; // Cắt tỉa
       }
     }
@@ -188,9 +188,9 @@ function NguoiDanhMin(board, doSau, alpha, beta) {
         // Ban đầu sẽ cho nước đi giả lập trên tất cả các nước đi của bàn cờ nếu bỏ thì nó sẽ hiện hết tất cả nước đi giả lập đó
         board[i][j] = "";
         // gán giá trị nhỏ nhất cho minEval để lưu lại những lần sau sẽ so sánh với eval nữa
-        minEval = Math.min(minEval, eval);
+        if (minEval > eval) minEval = eval;
         // tìm giá trị nhỏ nhất và gán cho beta
-        beta = Math.min(beta, eval);
+        if (beta > eval) beta = eval;
 
         if (beta <= alpha) break; // Cắt tỉa
       }
