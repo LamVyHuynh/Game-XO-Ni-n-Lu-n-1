@@ -11,6 +11,9 @@ h1 {
   font-size: 50px;
   color: #4b68d0;
   font-weight: 700;
+  background: linear-gradient(50deg, #d90429, blue);
+  background-clip: text;
+  color: transparent;
 }
 
 #btn_play {
@@ -21,10 +24,10 @@ h1 {
   height: 150px;
   border: none;
   border-radius: 90px;
-  background-color: #4b68d0;
+  background: linear-gradient(45deg, #d90429, blue);
 }
 
 #btn_play:hover {
   cursor: pointer;
-  background-color: #0f2d58;
+  background: linear-gradient(200deg, #d90429, blue);
 }

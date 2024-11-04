@@ -41,11 +41,11 @@ body {
 
 .nut_reset {
   color: #fffbf9;
-  background-color: #4b68d0;
+  background: linear-gradient(45deg, #d90429, blue);
 }
 
 .nut_reset:hover {
-  background-color: #0f2d58;
+  background: linear-gradient(200deg, #d90429, blue);
 }
 
 .nuts:hover {
@@ -53,12 +53,12 @@ body {
 }
 
 .nut_home {
-  background-color: #4361ee;
+  background: linear-gradient(45deg, #d90429, blue);
   color: #fff;
 }
 
 .nut_home:hover {
-  background-color: #3a0ca3;
+  background: linear-gradient(200deg, #d90429, blue);
 }
 
 #result {
@@ -121,7 +121,7 @@ td:hover {
   text-transform: uppercase;
   font-size: 30px;
   color: #fffbf9;
-  background-color: #4b68d0;
+  background: linear-gradient(45deg, #d90429, blue);
   margin-bottom: 30px;
 }
 

@@ -29,14 +29,18 @@ body {
   top: 50px;
   left: 50px;
   font-size: 50px;
+  background: linear-gradient(45deg, #d90429, blue);
+  background-clip: text;
+  color: transparent;
 }
 
 .back .icon-back {
-  color: #4361ee;
   padding: 10px;
 }
 
 .back .icon-back:hover {
   cursor: pointer;
-  color: #3a0ca3;
+  background: linear-gradient(200deg, #d90429, blue);
+  background-clip: text;
+  color: transparent;
 }
