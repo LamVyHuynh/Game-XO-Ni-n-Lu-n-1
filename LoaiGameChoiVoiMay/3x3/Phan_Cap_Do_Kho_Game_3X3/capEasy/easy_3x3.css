@@ -1,0 +1,148 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: #fffbf9;
+}
+
+#container {
+  padding: 50px;
+}
+
+.left {
+  position: absolute;
+  left: 30px;
+  top: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.khung_chua_nut {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.khung_chua_nut .nut_nguoi_choi {
+  font-size: 30px;
+  margin-right: 40px;
+}
+
+.nuts {
+  border-radius: 40px;
+  font-size: 30px;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 200px;
+  outline: none;
+  border: none;
+}
+
+.nut_reset {
+  color: #fffbf9;
+  background: linear-gradient(45deg, #d90429, blue);
+}
+
+.nut_reset:hover {
+  background: linear-gradient(200deg, #d90429, blue);
+}
+
+.nuts:hover {
+  cursor: pointer;
+}
+
+.nut_home {
+  background: linear-gradient(45deg, #d90429, blue);
+  color: #fff;
+}
+
+.nut_home:hover {
+  background: linear-gradient(200deg, #d90429, blue);
+}
+
+#result {
+  width: 300px;
+  height: 300px;
+  margin: auto;
+}
+
+table {
+  border: 1px solid #000;
+}
+
+td {
+  text-align: center;
+  border: 1px solid #000;
+  width: 50px;
+  height: 50px;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+td:hover {
+  cursor: pointer;
+  background-color: #ddd;
+}
+
+#result {
+  height: auto;
+}
+
+#who_win {
+  color: blue;
+  font-weight: 700;
+}
+
+#show_status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 40px;
+  width: 300px;
+  background-color: #fffbf9;
+  box-shadow: 2px 3px 2px 2px #000;
+  display: none;
+  position: absolute;
+  top: 30%;
+  left: 36%;
+  animation: ease-in-out 0.2s ShowStatus;
+}
+
+#header_status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: inherit;
+  height: 100px;
+  border-radius: 40px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 30px;
+  color: #fffbf9;
+  background: linear-gradient(45deg, #d90429, blue);
+  margin-bottom: 30px;
+}
+
+#gamestatus {
+  width: auto;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+#show_status .btn_reset {
+  display: flex;
+  justify-content: center;
+}
+
+@keyframes ShowStatus {
+  from {
+    transform: scale(0.5);
+  }
+  to {
+    transform: scale(1);
+  }
+}

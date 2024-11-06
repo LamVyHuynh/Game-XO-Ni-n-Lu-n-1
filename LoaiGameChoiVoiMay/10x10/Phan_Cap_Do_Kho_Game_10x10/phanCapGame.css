@@ -1,0 +1,62 @@
+.container {
+  height: 100vh;
+  width: auto 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container .phan_cap {
+  padding: 30px;
+  margin: 0 10px;
+  height: 200px;
+  width: 400px;
+  font-size: 30px;
+  border: none;
+  cursor: pointer;
+  border-radius: 50px;
+}
+
+.container .De {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.container .De:hover {
+  background-color: #81c784;
+}
+
+.container .trungBinh {
+  background-color: #ffc107;
+  color: #fff;
+}
+
+.container .trungBinh:hover {
+  background-color: #ffd54f;
+}
+
+.container .Kho {
+  background-color: #f44336;
+  color: #fff;
+}
+
+.container .Kho:hover {
+  background-color: #ef9a9a;
+}
+
+.back {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  font-size: 50px;
+  background: linear-gradient(45deg, #d90429, blue);
+  background-clip: text;
+  color: transparent;
+}
+
+.back:hover {
+  cursor: pointer;
+  background: linear-gradient(200deg, #d90429, blue);
+  background-clip: text;
+  color: transparent;
+}
