@@ -5,6 +5,7 @@
   height: 100vh;
   flex-direction: column;
   background-color: #fffbf9;
+  font-family: "Poppins", sans-serif;
 }
 
 h1 {

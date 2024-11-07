@@ -4,6 +4,7 @@ body {
   align-items: center;
   position: relative;
   background-color: #fffbf9;
+  font-family: "Poppins", sans-serif;
 }
 
 #container {

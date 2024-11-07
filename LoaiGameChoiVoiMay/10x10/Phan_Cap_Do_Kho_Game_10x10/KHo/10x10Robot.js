@@ -136,7 +136,7 @@ function alphaBeta(board, doSau, isMaximizing, alpha, beta) {
   let danhGia = danhGiaBanCo();
   if (danhGia !== null) return danhGia;
   // Giới hạn độ sâu giúp xử lí nhanh hơn
-  if (doSau >= 1) {
+  if (doSau >= 5) {
     return 0; // Tại độ sâu nhất, trả về giá trị hòa
   }
   if (isMaximizing) {

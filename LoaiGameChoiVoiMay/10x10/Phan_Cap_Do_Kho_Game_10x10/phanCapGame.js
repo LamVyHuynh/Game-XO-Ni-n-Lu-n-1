@@ -3,7 +3,7 @@ function Kho10x10() {
 }
 
 function Easy10x10() {
-  window.location.assign("./KHo/10x10Robot.html");
+  window.location.assign("./De/Easy_10x10.html");
 }
 
 document.getElementById("btn_back").onclick = function () {
