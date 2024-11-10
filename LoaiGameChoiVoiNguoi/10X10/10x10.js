@@ -81,10 +81,18 @@ function DanhXO(i, j) {
     document.getElementById(
       "who_next"
     ).innerHTML = `<span style="color:red;font-weight: 700">O</span>`;
+    let audio = document.getElementById("audioDanhCo");
+    audio.currentTime = 0; // Đặt lại thời gian phát
+    // Phát âm thanh và ngắt ngay sau khi đánh X
+    audio.play();
   } else {
     document.getElementById(
       "who_next"
     ).innerHTML = `<span style="color:blue; font-weight: 700">X</span>`;
+    let audio = document.getElementById("audioDanhCo");
+    audio.currentTime = 0; // Đặt lại thời gian phát
+    // Phát âm thanh và ngắt ngay sau khi đánh X
+    audio.play();
   }
   display(); // Cập nhật giao diện bàn cờ
   XacNhanTinhTrang(i, j);

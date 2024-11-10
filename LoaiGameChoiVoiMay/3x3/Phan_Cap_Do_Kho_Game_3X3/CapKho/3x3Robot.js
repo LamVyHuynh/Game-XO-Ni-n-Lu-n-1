@@ -78,6 +78,10 @@ function display() {
 function DanhXO(i, j) {
   if (gameEnded || array[i][j] !== "") return; // Không cho phép đi lại vào ô đã đánh hoặc trò chơi đã kết thúc
   array[i][j] = "X"; // Gán cho array có giá trị của isPlayer1 = true thì nó đánh X còn false thì nó sẽ đánh là O
+  let audio = document.getElementById("audioDanhCo");
+  audio.currentTime = 0; // Đặt lại thời gian phát
+  // Phát âm thanh và ngắt ngay sau khi đánh X
+  audio.play();
   display(); // Cập nhật giao diện bàn cờ
   XacNhanTinhTrang(i, j);
   if (!gameEnded) {
@@ -101,6 +105,10 @@ function MayDanhXO() {
     for (let j = 0; j < 3; j++) {
       if (array[i][j] === "") {
         array[i][j] = "O"; // Giả lập nước đi
+        let audio = document.getElementById("audioDanhCo");
+        audio.currentTime = 0; // Đặt lại thời gian phát
+        // Phát âm thanh và ngắt ngay sau khi đánh X
+        audio.play();
         if (array[i][j] === "O") {
           document.getElementById(
             "who_next"

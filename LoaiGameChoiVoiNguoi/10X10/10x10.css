@@ -148,3 +148,8 @@ td:hover {
     transform: scale(1);
   }
 }
+
+/* Âm thanh */
+#audioDanhCo {
+  display: none;
+}
