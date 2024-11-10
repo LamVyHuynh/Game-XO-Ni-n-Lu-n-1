@@ -93,7 +93,7 @@ function DanhXO(i, j) {
       "who_next"
     ).innerHTML = `<span style="color:red;font-weight: 700">O</span>`;
     isPlayer1 = !isPlayer1; // không có 2 trường hợp trên thì isPlayer1 sẽ chuyển thành false và Nước O sẽ đi
-    setTimeout(MayDanhXO, 300); // cho máy đánh khi trò chơi chưa kết thúc
+    setTimeout(MayDanhXO, 500); // cho máy đánh khi trò chơi chưa kết thúc
   }
 }
 //   KẾT THÚC THAO TÁC BẤM XO

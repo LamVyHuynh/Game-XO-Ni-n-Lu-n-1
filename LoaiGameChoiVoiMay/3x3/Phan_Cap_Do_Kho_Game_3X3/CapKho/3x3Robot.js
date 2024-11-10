@@ -89,7 +89,7 @@ function DanhXO(i, j) {
     document.getElementById(
       "who_next"
     ).innerHTML = `<span style="color:red;font-weight: 700">O</span>`;
-    setTimeout(MayDanhXO, 300); // cho máy đánh khi trò chơi chưa kết thúc
+    setTimeout(MayDanhXO, 500); // cho máy đánh khi trò chơi chưa kết thúc
   }
 }
 //   KẾT THÚC THAO TÁC ĐÁNH XO
