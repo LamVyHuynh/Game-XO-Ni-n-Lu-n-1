@@ -40,6 +40,11 @@ function reset() {
     "who_next"
   ).innerHTML = `<span style="color:blue; font-weight: 700">X</span>`; // Khi reset sẽ cập nhật lại lượt đi tiếp theo là X
   ShowBox.style.display = "none";
+
+  // tạm dừng âm thanh
+  let audioWin = document.getElementById("audioWin");
+  audioWin.pause(); // Dừng âm thanh
+  audioWin.currentTime = 0; // Đặt lại thời gian phát về 0
 }
 // KẾT THÚC: RESET TRÒ CHƠI
 //BẮT ĐẦU: Code tạo bảng để đánh XO
@@ -72,7 +77,7 @@ function display() {
   document.getElementById("result").innerHTML = tableString;
 }
 //KẾT THÚC: Code tạo bảng để đánh XO
-//   BẮT ĐẦU THAO TÁC BẤM XO
+
 //   BẮT ĐẦU THAO TÁC BẤM XO
 function DanhXO(i, j) {
   if (gameEnded || array[i][j] !== "") return; // Không cho phép đi lại vào ô đã đánh hoặc trò chơi đã kết thúc
@@ -132,6 +137,11 @@ function XacNhanTinhTrang(i, j) {
     setTimeout(() => {
       ShowBox.style.display = "block";
     }, 300);
+    // Âm thanh chiến thắng
+    let audio = document.getElementById("audioWin");
+    audio.currentTime = 0; // Đặt lại thời gian phát
+    // Phát âm thanh và ngắt ngay sau khi đánh X
+    audio.play();
     display();
     gameEnded = true;
   } else if (kiemTraDay()) {

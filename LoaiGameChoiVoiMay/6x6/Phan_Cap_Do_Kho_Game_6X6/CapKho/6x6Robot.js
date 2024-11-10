@@ -40,6 +40,10 @@ function reset() {
     "who_next"
   ).innerHTML = `<span style="color:blue; font-weight: 700">X</span>`;
   ShowBox.style.display = "none";
+  // tạm dừng âm thanh
+  let audioWin = document.getElementById("audioWin");
+  audioWin.pause(); // Dừng âm thanh
+  audioWin.currentTime = 0; // Đặt lại thời gian phát về 0
 }
 // KẾT THÚC: RESET TRÒ CHƠI
 //BẮT ĐẦU: Code tạo bảng để đánh XO
@@ -149,7 +153,7 @@ function alphaBeta(board, doSau, isMaximizing, alpha, beta) {
   let danhGia = danhGiaBanCo();
   if (danhGia !== null) return danhGia;
   // Giới hạn độ sâu giúp xử lí nhanh hơn
-  if (doSau >= 4) {
+  if (doSau >= 6) {
     return 0; // Tại độ sâu nhất, trả về giá trị hòa
   }
   if (isMaximizing) {
@@ -216,6 +220,11 @@ function XacNhanTinhTrang(i, j) {
     setTimeout(() => {
       ShowBox.style.display = "block";
     }, 300);
+    // Âm thanh chiến thắng
+    let audio = document.getElementById("audioWin");
+    audio.currentTime = 0; // Đặt lại thời gian phát
+    // Phát âm thanh và ngắt ngay sau khi đánh X
+    audio.play();
     display();
     gameEnded = true;
   } else if (kiemTraDay()) {

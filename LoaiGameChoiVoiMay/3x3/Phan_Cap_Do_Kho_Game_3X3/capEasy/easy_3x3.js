@@ -40,6 +40,9 @@ function reset() {
     "who_next"
   ).innerHTML = `<span style="color:blue; font-weight: 700">X</span>`; // khi reset sẽ hiện lại lượt tiếp theo đi là X
   ShowBox.style.display = "none";
+  let audioWin = document.getElementById("audioWin");
+  audioWin.pause(); // Dừng âm thanh
+  audioWin.currentTime = 0; // Đặt lại thời gian phát về 0
 }
 
 // KẾT THÚC: RESET TRÒ CHƠI
@@ -129,7 +132,12 @@ function XacNhanTinhTrang(i, j) {
     }`;
     setTimeout(() => {
       ShowBox.style.display = "block";
-    }, 500);
+    }, 300);
+    // Âm thanh chiến thắng
+    let audio = document.getElementById("audioWin");
+    audio.currentTime = 0; // Đặt lại thời gian phát
+    // Phát âm thanh và ngắt ngay sau khi đánh X
+    audio.play();
     display();
     gameEnded = true;
   } else if (kiemTraDay()) {
