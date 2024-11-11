@@ -40,10 +40,15 @@ function reset() {
     "who_next"
   ).innerHTML = `<span style="color:blue; font-weight: 700">X</span>`; // Khi reset sẽ cập nhật lại lượt đi tiếp theo là X
   ShowBox.style.display = "none";
-  // tạm dừng âm thanh
+  // tạm dừng âm thanh chiến thắng
   let audioWin = document.getElementById("audioWin");
   audioWin.pause(); // Dừng âm thanh
   audioWin.currentTime = 0; // Đặt lại thời gian phát về 0
+
+  // Tạm dừng âm thanh hoà nhau
+  let audioDraw = document.getElementById("audioDraw");
+  audioDraw.pause(); // Dừng âm thanh
+  audioDraw.currentTime = 0; // Đặt lại thời gian phát về 0
 }
 // KẾT THÚC: RESET TRÒ CHƠI
 //BẮT ĐẦU: Code tạo bảng để đánh XO
@@ -236,6 +241,11 @@ function XacNhanTinhTrang(i, j) {
     setTimeout(() => {
       ShowBox.style.display = "block";
     }, 300);
+    // Âm thanh hoà nhau
+    let audio_draw = document.getElementById("audioDraw");
+    audio_draw.currentTime = 0; // Đặt lại thời gian phát
+    // Phát âm thanh và ngắt ngay sau khi đánh X
+    audio_draw.play();
     gameEnded = true;
   }
 }

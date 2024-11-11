@@ -40,9 +40,15 @@ function reset() {
     "who_next"
   ).innerHTML = `<span style="color:blue; font-weight: 700">X</span>`; // khi reset sẽ hiện lại lượt tiếp theo đi là X
   ShowBox.style.display = "none";
+  // Tạm dừng âm thanh thắng
   let audioWin = document.getElementById("audioWin");
   audioWin.pause(); // Dừng âm thanh
   audioWin.currentTime = 0; // Đặt lại thời gian phát về 0
+
+  // Tạm dừng âm thanh thua
+  let audioLose = document.getElementById("audioLose");
+  audioLose.pause(); // Dừng âm thanh
+  audioLose.currentTime = 0; // Đặt lại thời gian phát về 0
 }
 
 // KẾT THÚC: RESET TRÒ CHƠI
@@ -144,7 +150,12 @@ function XacNhanTinhTrang(i, j) {
     document.getElementById("gamestatus").innerHTML = "Hòa nhau!";
     setTimeout(() => {
       ShowBox.style.display = "block";
-    }, 500);
+    }, 300);
+    // Âm thanh chiến thắng
+    let audio_draw = document.getElementById("audioDraw");
+    audio_draw.currentTime = 0; // Đặt lại thời gian phát
+    // Phát âm thanh và ngắt ngay sau khi đánh X
+    audio_draw.play();
     gameEnded = true;
   }
 }

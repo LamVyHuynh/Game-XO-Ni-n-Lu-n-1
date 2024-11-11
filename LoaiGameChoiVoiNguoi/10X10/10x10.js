@@ -41,9 +41,16 @@ function reset() {
     "who_next"
   ).innerHTML = `<span style="color:blue; font-weight: 700">X</span>`; // Khi reset sẽ cập nhật lại lượt đi tiếp theo là X
   ShowBox.style.display = "none";
+
+  // Tạm dừng âm thanh chiến thắng
   let audioWin = document.getElementById("audioWin");
   audioWin.pause(); // Dừng âm thanh
   audioWin.currentTime = 0; // Đặt lại thời gian phát về 0
+
+  // Tạm dừng âm thanh hoà nhau
+  let audioDraw = document.getElementById("audioDraw");
+  audioDraw.pause(); // Dừng âm thanh
+  audioDraw.currentTime = 0; // Đặt lại thời gian phát về 0
 }
 // KẾT THÚC: RESET TRÒ CHƠI
 //BẮT ĐẦU: Code tạo bảng để đánh XO
