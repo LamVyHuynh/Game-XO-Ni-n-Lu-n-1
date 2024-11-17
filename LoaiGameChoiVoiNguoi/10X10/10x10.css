@@ -21,11 +21,10 @@ body {
 .khung_chua_nut {
   display: flex;
   align-items: center;
-  margin-bottom: 30px;
 }
 
 .khung_chua_nut .nut_nguoi_choi {
-  font-size: 40px;
+  font-size: 30px;
   margin-right: 40px;
 }
 
@@ -152,4 +151,17 @@ td:hover {
 /* Âm thanh */
 #audioDanhCo {
   display: none;
+}
+
+.luatchoi {
+  position: absolute;
+  bottom: 50px;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.luatchoi .law {
+  font-size: 30px;
+  font-weight: 600;
+  color: #00296b;
 }
