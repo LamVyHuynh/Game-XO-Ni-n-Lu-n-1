@@ -4,6 +4,7 @@ let isPlayer1 = true;
 let arrayWin = [];
 let gameEnded = false;
 let ShowBox = document.getElementById("show_status");
+
 // Sẽ thực hiện tải trang lên với hàm có reset bên trong khi tải trang lên thì hàm reset được gọi và reset lại tất cả có bảng
 // đánh bên trong nên dô không cần reset mà dô chỉ cần chơi mà thoi
 window.onload = function () {
@@ -50,6 +51,8 @@ function reset() {
   let audioDraw = document.getElementById("audioDraw");
   audioDraw.pause(); // Dừng âm thanh
   audioDraw.currentTime = 0; // Đặt lại thời gian phát về 0
+  // Thời gian máy đánh
+  document.getElementById("thoiGian").innerHTML = "00:00";
 }
 // KẾT THÚC: RESET TRÒ CHƠI
 //BẮT ĐẦU: Code tạo bảng để đánh XO
@@ -92,11 +95,13 @@ function DanhXO(i, j) {
   audio.play();
   display(); // Cập nhật giao diện bàn cờ
   XacNhanTinhTrang(i, j);
+
   if (!gameEnded) {
     document.getElementById(
       "who_next"
     ).innerHTML = `<span style="color:red;font-weight: 700">O</span>`;
     isPlayer1 = !isPlayer1; // không có 2 trường hợp trên thì isPlayer1 sẽ chuyển thành false và Nước O sẽ đi
+    dongHo();
     setTimeout(MayDanhXO, 500); // cho máy đánh khi trò chơi chưa kết thúc
   }
 }
@@ -105,7 +110,8 @@ function DanhXO(i, j) {
 // BẮT ĐẦU HÀM MÁY ĐÁNH
 function MayDanhXO() {
   if (gameEnded) return;
-  // Ban đầu O điểm cao nhất là âm vô cực để khi tìm nó sẽ tìm đường tốt hơn
+  // Ban đầu O điểm cao nhất là âm vô cực để khi tìm nó sẽ tìm đường tốt hơn\
+
   let diemCaoNhat = -Infinity;
   let nuocDiTotNhat = null;
 
@@ -142,11 +148,36 @@ function MayDanhXO() {
     display(); // Cập nhật giao diện
     XacNhanTinhTrang(nuocDiTotNhat.i, nuocDiTotNhat.j); // Kiểm tra tình trạng thắng
     isPlayer1 = !isPlayer1; // Chuyển lượt
+    dungDongHo();
+    document.getElementById("thoiGian").innerText = "00:00";
   }
 }
 
 // KẾT THÚC HÀM MÁY ĐÁNH
 
+let thoiGian = 0;
+let khoangThoiGian;
+// BẮT ĐẦU PHẦN ĐỒNG HỒ ĐẾM THỜI GIAN MÁY ĐÁNH
+// BẮT ĐẦU PHẦN ĐỒNG HỒ ĐẾM THỜI GIAN MÁY ĐÁNH
+function dongHo() {
+  thoiGian = 0; // Reset thời gian
+  clearInterval(khoangThoiGian); // Dừng đồng hồ
+  khoangThoiGian = setInterval(() => {
+    thoiGian++;
+    const phut = Math.floor(thoiGian / 60);
+    const giay = thoiGian % 60;
+
+    document.getElementById("thoiGian").innerText = `${
+      phut < 10 ? "0" : ""
+    }${phut}:${giay < 10 ? "0" : ""}${giay}`;
+  }, 1000);
+}
+
+// Dừng đếm
+function dungDongHo() {
+  clearInterval(khoangThoiGian); // Dừng đồng hồ
+}
+// KẾT THÚC PHẦN ĐỒNG ĐỒ ĐẾM THỜI GIAN MÁY ĐÁNH
 // BẮT ĐÀU ĐÁNH GIÁ BÀN CỜ
 function danhGiaBanCo() {
   if (kiemTraThang("O")) return 1;
@@ -159,7 +190,7 @@ function alphaBeta(board, doSau, isMaximizing, alpha, beta) {
   let danhGia = danhGiaBanCo();
   if (danhGia !== null) return danhGia;
   // Giới hạn độ sâu giúp xử lí nhanh hơn
-  if (doSau >= 6) {
+  if (doSau >= 5) {
     return 0; // Tại độ sâu nhất, trả về giá trị hòa
   }
   if (isMaximizing) {
@@ -190,6 +221,10 @@ function MayDanhMax(board, doSau, alpha, beta) {
   return maxEval;
 }
 // KẾT THÚC HÀM MÁY ĐÁNH MAX
+
+// BẮT ĐẦU PHẦN ĐỒNG HỒ ĐẾM THỜI GIAN MÁY ĐÁNH
+
+// KẾT THÚC PHẦN ĐỒNG ĐỒ ĐẾM THỜI GIAN MÁY ĐÁNH
 
 // BẮT ĐẦU HÀM NGƯỜI ĐÁNH MIN
 function NguoiDanhMin(board, doSau, alpha, beta) {
@@ -245,6 +280,7 @@ function XacNhanTinhTrang(i, j) {
     audio_draw.play();
     gameEnded = true;
   }
+  dungDongHo();
 }
 // KẾT THÚC XÁC NHẬN CHIẾN THẮNG
 

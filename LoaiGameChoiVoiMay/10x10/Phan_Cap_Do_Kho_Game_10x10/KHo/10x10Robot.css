@@ -21,11 +21,10 @@ body {
 .khung_chua_nut {
   display: flex;
   align-items: center;
-  margin-bottom: 30px;
 }
 
 .khung_chua_nut .nut_nguoi_choi {
-  font-size: 40px;
+  font-size: 30px;
   margin-right: 40px;
 }
 
@@ -104,12 +103,13 @@ td:hover {
   border-radius: 40px;
   width: 300px;
   background-color: #fffbf9;
-  box-shadow: 2px 3px 2px 2px #000;
+  box-shadow: 5px 6px 20px 2px #ddd;
   display: none;
   position: absolute;
-  top: 35%;
-  left: 39%;
+  top: 29%;
+  left: 37%;
   animation: ease-in-out 0.2s ShowStatus;
+  width: 360px;
 }
 
 #header_status {
@@ -152,4 +152,17 @@ td:hover {
 /* Âm thanh */
 #audioDanhCo {
   display: none;
+}
+
+.luatchoi {
+  position: absolute;
+  bottom: 50px;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.luatchoi .law {
+  font-size: 30px;
+  font-weight: 600;
+  color: #00296b;
 }

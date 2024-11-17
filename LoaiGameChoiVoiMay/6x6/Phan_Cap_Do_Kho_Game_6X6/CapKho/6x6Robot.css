@@ -98,12 +98,13 @@ td:hover {
   border-radius: 40px;
   width: 300px;
   background-color: #fffbf9;
-  box-shadow: 2px 3px 2px 2px #000;
+  box-shadow: 5px 6px 20px 2px #ddd;
   display: none;
   position: absolute;
-  top: 30%;
-  left: 36%;
+  top: 29%;
+  left: 37%;
   animation: ease-in-out 0.2s ShowStatus;
+  width: 360px;
 }
 
 #header_status {
@@ -146,4 +147,37 @@ td:hover {
 /* Âm thanh */
 #audioDanhCo {
   display: none;
+}
+
+#clock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: green;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  position: absolute;
+  top: 100px;
+  right: 100px;
+}
+
+#clock .time {
+  font-size: 60px;
+  color: #fff;
+  padding: 50px;
+  font-weight: 600;
+}
+
+.luatchoi {
+  position: absolute;
+  bottom: 0;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.luatchoi .law {
+  font-size: 30px;
+  font-weight: 600;
+  color: #00296b;
 }
