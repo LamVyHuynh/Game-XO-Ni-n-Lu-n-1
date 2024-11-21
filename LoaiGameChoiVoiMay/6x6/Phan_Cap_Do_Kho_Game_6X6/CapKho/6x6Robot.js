@@ -51,8 +51,6 @@ function reset() {
   let audioDraw = document.getElementById("audioDraw");
   audioDraw.pause(); // Dừng âm thanh
   audioDraw.currentTime = 0; // Đặt lại thời gian phát về 0
-  // Thời gian máy đánh
-  document.getElementById("thoiGian").innerHTML = "00:00";
 }
 // KẾT THÚC: RESET TRÒ CHƠI
 //BẮT ĐẦU: Code tạo bảng để đánh XO
@@ -101,7 +99,6 @@ function DanhXO(i, j) {
       "who_next"
     ).innerHTML = `<span style="color:red;font-weight: 700">O</span>`;
     isPlayer1 = !isPlayer1; // không có 2 trường hợp trên thì isPlayer1 sẽ chuyển thành false và Nước O sẽ đi
-    dongHo();
     setTimeout(MayDanhXO, 500); // cho máy đánh khi trò chơi chưa kết thúc
   }
 }
@@ -148,36 +145,11 @@ function MayDanhXO() {
     display(); // Cập nhật giao diện
     XacNhanTinhTrang(nuocDiTotNhat.i, nuocDiTotNhat.j); // Kiểm tra tình trạng thắng
     isPlayer1 = !isPlayer1; // Chuyển lượt
-    dungDongHo();
-    document.getElementById("thoiGian").innerText = "00:00";
   }
 }
 
 // KẾT THÚC HÀM MÁY ĐÁNH
 
-let thoiGian = 0;
-let khoangThoiGian;
-// BẮT ĐẦU PHẦN ĐỒNG HỒ ĐẾM THỜI GIAN MÁY ĐÁNH
-// BẮT ĐẦU PHẦN ĐỒNG HỒ ĐẾM THỜI GIAN MÁY ĐÁNH
-function dongHo() {
-  thoiGian = 0; // Reset thời gian
-  clearInterval(khoangThoiGian); // Dừng đồng hồ
-  khoangThoiGian = setInterval(() => {
-    thoiGian++;
-    const phut = Math.floor(thoiGian / 60);
-    const giay = thoiGian % 60;
-
-    document.getElementById("thoiGian").innerText = `${
-      phut < 10 ? "0" : ""
-    }${phut}:${giay < 10 ? "0" : ""}${giay}`;
-  }, 1000);
-}
-
-// Dừng đếm
-function dungDongHo() {
-  clearInterval(khoangThoiGian); // Dừng đồng hồ
-}
-// KẾT THÚC PHẦN ĐỒNG ĐỒ ĐẾM THỜI GIAN MÁY ĐÁNH
 // BẮT ĐÀU ĐÁNH GIÁ BÀN CỜ
 function danhGiaBanCo() {
   if (kiemTraThang("O")) return 1;
@@ -280,7 +252,6 @@ function XacNhanTinhTrang(i, j) {
     audio_draw.play();
     gameEnded = true;
   }
-  dungDongHo();
 }
 // KẾT THÚC XÁC NHẬN CHIẾN THẮNG
 

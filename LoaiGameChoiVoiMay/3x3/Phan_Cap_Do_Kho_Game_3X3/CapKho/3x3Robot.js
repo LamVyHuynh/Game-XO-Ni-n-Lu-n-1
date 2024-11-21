@@ -5,10 +5,6 @@ let arrayWin = [];
 let gameEnded = false;
 let ShowBox = document.getElementById("show_status");
 
-// Đồng hồ
-let thoiGian = 0;
-let khoangThoiGian;
-
 // Sẽ thực hiện tải trang lên với hàm có reset bên trong khi tải trang lên thì hàm reset được gọi và reset lại tất cả có bảng
 // đánh bên trong nên dô không cần reset mà dô chỉ cần chơi mà thoi
 window.onload = function () {
@@ -55,7 +51,6 @@ function reset() {
   audioDraw.currentTime = 0; // Đặt lại thời gian phát về 0
 
   // Thời gian máy đánh
-  document.getElementById("thoiGian").innerHTML = "00:00";
 }
 
 // KẾT THÚC: RESET TRÒ CHƠI
@@ -106,7 +101,6 @@ function DanhXO(i, j) {
       "who_next"
     ).innerHTML = `<span style="color:red;font-weight: 700">O</span>`;
     setTimeout(MayDanhXO, 500); // cho máy đánh khi trò chơi chưa kết thúc
-    dongHo();
   }
 }
 //   KẾT THÚC THAO TÁC ĐÁNH XO
@@ -142,7 +136,6 @@ function MayDanhXO() {
         }
       }
     }
-    dungDongHo();
   }
 
   if (nuocDiTotNhat) {
@@ -226,27 +219,6 @@ function NguoiDanhMin(board, doSau, alpha, beta) {
   return minEval;
 }
 // KẾT THÚC HÀM NGƯỜI ĐÁNH MIN
-
-// BẮT ĐẦU PHẦN ĐỒNG HỒ ĐẾM THỜI GIAN MÁY ĐÁNH
-function dongHo() {
-  thoiGian = 0;
-  clearInterval(khoangThoiGian); // Dừng đồng hồ
-  khoangThoiGian = setInterval(() => {
-    thoiGian++;
-    const phut = Math.floor(thoiGian / 60);
-    const giay = thoiGian % 60;
-
-    document.getElementById("thoiGian").innerText = `${
-      phut < 10 ? "0" : ""
-    }${phut}:${giay < 10 ? "0" : ""}${giay}`;
-  }, 1000);
-}
-
-// Dừng đếm
-function dungDongHo() {
-  clearInterval(khoangThoiGian); // Dừng đồng hồ
-}
-// KẾT THÚC PHẦN ĐỒNG ĐỒ ĐẾM THỜI GIAN MÁY ĐÁNH
 
 // BẮT ĐẦU XÁC NHẬN CHIẾN THẮNG
 function XacNhanTinhTrang(i, j) {

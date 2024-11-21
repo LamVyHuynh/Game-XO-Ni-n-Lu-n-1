@@ -158,26 +158,6 @@ td:hover {
   display: none;
 }
 
-#clock {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: green;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  position: absolute;
-  top: 100px;
-  right: 100px;
-}
-
-#clock .time {
-  font-size: 60px;
-  color: #fff;
-  padding: 50px;
-  font-weight: 600;
-}
-
 .luatchoi {
   position: absolute;
   bottom: -100px;
