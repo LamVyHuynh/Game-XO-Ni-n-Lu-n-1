@@ -89,12 +89,11 @@ function display() {
   document.getElementById("result").innerHTML = tableString;
 }
 //KẾT THÚC: Code tạo bảng để đánh XO
-//   BẮT ĐẦU THAO TÁC BẤM XO
+
 //   BẮT ĐẦU THAO TÁC BẤM XO
 function DanhXO(i, j) {
   if (gameEnded || array[i][j] !== "") return; // Không cho phép đi lại vào ô đã đánh hoặc trò chơi đã kết thúc
   array[i][j] = "X"; // Gán cho array có giá trị của isPlayer1 = true thì nó đánh X còn false thì nó sẽ đánh là O
-
   let audio = document.getElementById("audioDanhCo");
   audio.currentTime = 0; // Đặt lại thời gian phát
   // Phát âm thanh và ngắt ngay sau khi đánh X
