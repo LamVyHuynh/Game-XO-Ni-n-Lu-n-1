@@ -1,11 +1,23 @@
 function ChooseGamePeople() {
-  window.location.assign("../LoaiGameChoiVoiNguoi/TheLoaiGame.html");
+  const audioClick = new Audio("../audio/clickbutton.mp3");
+  audioClick.play();
+  audioClick.onended = function () {
+    window.location.assign("../LoaiGameChoiVoiNguoi/TheLoaiGame.html");
+  };
 }
 
 function ChooseGameRobot() {
-  window.location.assign("../LoaiGameChoiVoiMay/TheLoaiGameRobot.html");
+  const audioClick = new Audio("../audio/clickbutton.mp3");
+  audioClick.play();
+  audioClick.onended = function () {
+    window.location.assign("../LoaiGameChoiVoiMay/TheLoaiGameRobot.html");
+  };
 }
 
 function Home() {
-  window.location.assign("../index.html");
+  const audioClick = new Audio("../audio/clickbutton.mp3");
+  audioClick.play();
+  audioClick.onended = function () {
+    window.location.assign("../index.html");
+  };
 }
