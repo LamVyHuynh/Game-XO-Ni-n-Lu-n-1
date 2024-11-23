@@ -13,11 +13,19 @@ window.onload = function () {
 // BẮT ĐẦU TRỞ VỀ THỂ LOẠI
 
 function TheLoai() {
-  location.assign("../../../TheLoaiGameRobot.html");
+  const audioClick = new Audio("../../../../audio/clickbutton.mp3");
+  audioClick.play();
+  audioClick.onended = function () {
+    window.location.assign("../../../TheLoaiGameRobot.html");
+  };
 }
 
 function Home() {
-  window.location.assign("../../../../index.html");
+  const audioClick = new Audio("../../../../audio/clickbutton.mp3");
+  audioClick.play();
+  audioClick.onended = function () {
+    window.location.assign("../../../../index.html");
+  };
 }
 // KẾT THÚC TRỞ VỀ THỂ LOẠI
 
