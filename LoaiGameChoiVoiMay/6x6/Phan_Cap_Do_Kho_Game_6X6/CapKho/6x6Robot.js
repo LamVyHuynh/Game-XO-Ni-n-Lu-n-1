@@ -194,7 +194,7 @@ function MayDanhMax(board, doSau, alpha, beta) {
         // gán giá trị nhỏ nhất cho maxEval để lưu lại những lần sau sẽ so sánh với eval nữa
         maxEval = Math.max(maxEval, eval);
         alpha = Math.max(alpha, eval);
-        if (beta <= alpha) break; // Cắt tỉa
+        if (alpha >= beta) break; // Cắt tỉa
       }
     }
   }
@@ -222,7 +222,7 @@ function NguoiDanhMin(board, doSau, alpha, beta) {
         minEval = Math.min(minEval, eval);
         beta = Math.min(beta, eval);
 
-        if (beta <= alpha) break; // Cắt tỉa
+        if (alpha >= beta) break; // Cắt tỉa
       }
     }
   }
