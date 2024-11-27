@@ -1,11 +1,13 @@
 body {
   position: relative;
 }
+
 #container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-color: #fffbf9;
 }
 
 .box {

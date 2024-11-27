@@ -1,10 +1,10 @@
 .container {
   height: 100vh;
-  width: auto 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: "Poppins", sans-serif;
+  background-color: #fffbf9;
 }
 
 .container .phan_cap {
