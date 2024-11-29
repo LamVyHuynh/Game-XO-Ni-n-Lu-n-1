@@ -103,12 +103,13 @@ td:hover {
   border-radius: 40px;
   width: 300px;
   background-color: #fffbf9;
-  box-shadow: 2px 3px 2px 2px #000;
+  box-shadow: 5px 6px 20px 2px #ddd;
   display: none;
   position: absolute;
-  top: 35%;
-  left: 39%;
+  top: 29%;
+  left: 37%;
   animation: ease-in-out 0.2s ShowStatus;
+  width: 360px;
 }
 
 #header_status {
