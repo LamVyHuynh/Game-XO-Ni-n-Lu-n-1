@@ -28,11 +28,12 @@ body {
   display: flex;
   align-items: center;
   margin-bottom: 30px;
+  justify-content: center;
 }
 
 .khung_chua_nut .nut_nguoi_choi {
   font-size: 30px;
-  margin-right: 40px;
+  margin-right: 150px;
 }
 
 .nuts {

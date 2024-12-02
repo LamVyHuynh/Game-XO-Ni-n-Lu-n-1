@@ -54,9 +54,9 @@ function reset() {
   audioWin.currentTime = 0; // Đặt lại thời gian phát về 0
 
   // Tạm dừng âm thanh thua
-  let audioLose = document.getElementById("audioLose");
-  audioLose.pause(); // Dừng âm thanh
-  audioLose.currentTime = 0; // Đặt lại thời gian phát về 0
+  let audioDraw = document.getElementById("audioDraw");
+  audioDraw.pause(); // Dừng âm thanh
+  audioDraw.currentTime = 0; // Đặt lại thời gian phát về 0
 }
 
 // KẾT THÚC: RESET TRÒ CHƠI

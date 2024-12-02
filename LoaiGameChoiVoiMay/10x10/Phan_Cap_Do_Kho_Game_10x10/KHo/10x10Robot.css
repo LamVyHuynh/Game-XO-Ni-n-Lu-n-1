@@ -21,6 +21,7 @@ body {
 .khung_chua_nut {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .khung_chua_nut .nut_nguoi_choi {

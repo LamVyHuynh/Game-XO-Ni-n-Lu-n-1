@@ -23,6 +23,7 @@ body {
   display: flex;
   align-items: center;
   margin-bottom: 30px;
+  justify-content: center;
 }
 
 .nuts {
@@ -46,7 +47,7 @@ body {
 
 .khung_chua_nut .nut_nguoi_choi {
   font-size: 35px;
-  margin-right: 40px;
+  margin-right: 80px;
 }
 
 .nuts:hover {

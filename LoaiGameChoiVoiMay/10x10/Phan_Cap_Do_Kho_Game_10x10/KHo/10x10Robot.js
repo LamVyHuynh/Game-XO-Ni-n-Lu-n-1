@@ -160,8 +160,8 @@ function alphaBeta(board, doSau, isMaximizing, alpha, beta) {
   let danhGia = danhGiaBanCo();
   if (danhGia !== null) return danhGia;
   // Giới hạn độ sâu giúp xử lí nhanh hơn
-  if (doSau >= 3) {
-    return 0; // Tại độ sâu nhất, trả về giá trị hòa
+  if (doSau >= 4) {
+    return 0;
   }
   if (isMaximizing) {
     return mayDanhMax(board, doSau, alpha, beta);

@@ -14,6 +14,8 @@ window.onload = function () {
 // BẮT ĐẦU TRỞ VỀ THỂ LOẠI
 function TheLoai() {
   const audioClick = new Audio("../../../../audio/clickbutton.mp3");
+  audioClick.currentTime = 0;
+  audioClick.pause();
   audioClick.play();
   audioClick.onended = function () {
     window.location.assign("../../../TheLoaiGameRobot.html");
@@ -24,6 +26,8 @@ function TheLoai() {
 // BẮT ĐẦU TRỞ VỀ TRANG CHỦ
 function Home() {
   const audioClick = new Audio("../../../../audio/clickbutton.mp3");
+  audioClick.currentTime = 0;
+  audioClick.pause();
   audioClick.play();
   audioClick.onended = function () {
     window.location.assign("../../../../index.html");
@@ -98,6 +102,7 @@ function DanhXO(i, j) {
   let audio = document.getElementById("audioDanhCo");
   audio.currentTime = 0; // Đặt lại thời gian phát
   // Phát âm thanh và ngắt ngay sau khi đánh X
+  audio.pause();
   audio.play();
   display(); // Cập nhật giao diện bàn cờ
   XacNhanTinhTrang(i, j);
@@ -127,6 +132,7 @@ function MayDanhXO() {
         let audio = document.getElementById("audioDanhCo");
         audio.currentTime = 0; // Đặt lại thời gian phát
         // Phát âm thanh và ngắt ngay sau khi đánh X
+        audio.pause();
         audio.play();
         if (array[i][j] === "O") {
           document.getElementById(
@@ -169,9 +175,8 @@ function danhGiaBanCo() {
 function alphaBeta(board, doSau, isMaximizing, alpha, beta) {
   let danhGia = danhGiaBanCo();
   if (danhGia !== null) return danhGia;
-  // Giới hạn độ sâu giúp xử lí nhanh hơn
   if (doSau >= 5) {
-    return 0; // Tại độ sâu nhất, trả về giá trị hòa
+    return 0;
   }
   if (isMaximizing) {
     return MayDanhMax(board, doSau, alpha, beta);
@@ -245,6 +250,7 @@ function XacNhanTinhTrang(i, j) {
     let audio = document.getElementById("audioWin");
     audio.currentTime = 0; // Đặt lại thời gian phát
     // Phát âm thanh và ngắt ngay sau khi đánh X
+    audio.pause();
     audio.play();
     display();
     gameEnded = true;
@@ -257,6 +263,7 @@ function XacNhanTinhTrang(i, j) {
     let audio_draw = document.getElementById("audioDraw");
     audio_draw.currentTime = 0; // Đặt lại thời gian phát
     // Phát âm thanh và ngắt ngay sau khi đánh X
+    audio_draw.pause();
     audio_draw.play();
     gameEnded = true;
   }
