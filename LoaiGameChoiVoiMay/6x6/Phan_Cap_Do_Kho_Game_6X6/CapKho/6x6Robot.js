@@ -153,7 +153,7 @@ function MayDanhXO() {
   }
 
   if (nuocDiTotNhat) {
-    // Reset lại mảng arrayWin trước khi máy thực sự đánh để không bị tô màu background của ô
+    // Reset lại mảng arrayWin trước khi máy thực hiện giả lập đánh để không bị tô màu background của ô
     arrayWin = [];
     array[nuocDiTotNhat.i][nuocDiTotNhat.j] = "O"; // Máy đánh
     display(); // Cập nhật giao diện
