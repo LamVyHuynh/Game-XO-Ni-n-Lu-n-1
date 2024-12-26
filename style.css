@@ -16,19 +16,3 @@ h1 {
   background-clip: text;
   color: transparent;
 }
-
-#btn_play {
-  display: block;
-  font-size: 30px;
-  color: #fffbf9;
-  width: 300px;
-  height: 150px;
-  border: none;
-  border-radius: 90px;
-  background: linear-gradient(45deg, #d90429, blue);
-}
-
-#btn_play:hover {
-  cursor: pointer;
-  background: linear-gradient(200deg, #d90429, blue);
-}
