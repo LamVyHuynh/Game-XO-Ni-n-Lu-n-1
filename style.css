@@ -5,14 +5,34 @@
   height: 100vh;
   flex-direction: column;
   background-color: #fffbf9;
-  font-family: "Poppins", sans-serif;
+  background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+  font-family: Nunito;
 }
 
 h1 {
-  font-size: 50px;
+  font-size: 60px;
   color: #4b68d0;
   font-weight: 700;
   background: linear-gradient(50deg, #d90429, blue);
   background-clip: text;
   color: transparent;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+.btn {
+  font-size: 40px;
+  margin-top: 80px;
+  background: rgb(3, 71, 216);
+
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+.btn:hover {
+  background: linear-gradient(135deg, blue, purple);
+  transform: scale(1.05);
+  transition: 0.3s ease;
+}
+
+.img-lg {
+  width: 200px;
+  height: 200px;
 }
